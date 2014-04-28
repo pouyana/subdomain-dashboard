@@ -1,13 +1,13 @@
 {
- "name": "MyPlugin",
+ "name": "Subdomain Dashboard",
  "version": "0.0.1",
- "description": "Test Piwik Plugin",
+ "description": "A Plugin to enhance Piwikis abillity, by showing dashboards for the subdomain of a main domain. It also allows user managment for this subdomains.",
  "theme": false,
  "authors": [
      {
-         "name": "Piwik",
-         "email": "",
-         "homepage": ""
+         "name": "Pouyan Azari",
+         "email": "pouyan.azari@uni-wuerzburg.de",
+         "homepage": "http://www.rz.uni-wuerzburg.de/wir/mitarbeiter/web_services/azari_pouyan/"
      }
  ]
 }
