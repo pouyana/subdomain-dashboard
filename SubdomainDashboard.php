@@ -8,6 +8,17 @@
  */
 namespace Piwik\Plugins\SubdomainDashboard;
 
+use Exception;
+use Piwik\Menu\MenuAdmin;
+use Piwik\Config;
+use Piwik\Cookie;
+use Piwik\Option;
+use Piwik\Piwik;
+use Piwik\Plugins\UsersManager\UsersManager;
+use Piwik\Plugin\Manager;
+use Piwik\Session;
+
+
 /**
  */
 class SubdomainDashboard extends \Piwik\Plugin
@@ -19,7 +30,7 @@ class SubdomainDashboard extends \Piwik\Plugin
     {
         return array(
             'AssetManager.getJavaScriptFiles' => 'getJsFiles',
-	    'Menu.Reporting.addItems' => 'getReportingMenuItems'
+            'Menu.Admin.addItems'              => 'addMenu',
         );
     }
 
@@ -27,7 +38,8 @@ class SubdomainDashboard extends \Piwik\Plugin
     {
         $jsFiles[] = 'plugins/SubdomainDashboard/javascripts/plugin.js';
     }
-	public function getReportingMenuItems()
+    
+    public function getReportingMenuItems()
     {
 	\Piwik\Menu\MenuMain::getInstance()->add(
         $category = 'General_Visitors', 
@@ -38,5 +50,10 @@ class SubdomainDashboard extends \Piwik\Plugin
         // these are the query parameters that will be used in the menu item link's URL
         $urlQueryParams = array('module' => $this->getPluginName(), 'action' => 'index')
     );
+   }
+   public function addMenu()
+   {
+	 MenuAdmin::getInstance()->add('CoreAdminHome_MenuManage', 'SubdomainDashboard_Menu', array('module' => 'SubdomainDashboard', 'action' => 'index'),
+         Piwik::hasUserSuperUserAccess(), $order = 3);	
    }
 }

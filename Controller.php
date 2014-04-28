@@ -37,6 +37,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
     public function index()
     {
+	Piwik::checkUserHasSuperUserAccess();
         $view = new View('@SubdomainDashboard/index.twig');
         $this->setBasicVariablesView($view);
         $view->answerToLife = '42';
