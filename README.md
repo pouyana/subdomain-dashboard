@@ -1,18 +1,18 @@
-# Piwik MyPlugin Plugin
+# Piwik Subdomain Dashboard Plugin
 
 ## Description
 
-Add your plugin description here.
+This Plugin will create Dashboards for the subdomains of a main domain and also allows User access management for this dashboards with help of MYSQL or LDAP.
 
 ## FAQ
 
-__My question?__
-My answer
+__How far is it developed?It is in it's initial way and developed by the developer in his free time. 
 
 ## Changelog
 
-Here goes the changelog text.
+0.0.0.1 Initial
+-skeleton plugin added.
 
 ## Support
 
-Please direct any feedback to ...
+Please direct any feedback to pouyan.azari[at]uni-wuerzburg.de
