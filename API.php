@@ -9,7 +9,7 @@
 namespace Piwik\Plugins\SubdomainDashboard;
 
 /**
- * API for plugin MyPlugin
+ * API for plugin SubdomainDashboard
  *
  * @method static \Piwik\Plugins\SubdomainDashboard\API getInstance()
  */
@@ -19,7 +19,7 @@ class API extends \Piwik\Plugin\API
      * Example method. Please remove if you do not need this API method.
      * You can call this API method like this:
      * /index.php?module=API&method=SubdomainDashboard.getAnswerToLife
-     * /index.php?module=API&method=SubdomainDashboard.getAnswerToLife?truth=0
+     * /index.php?module=API&method=SubdomainDashboard.getAnswerToLife&truth=0
      *
      * @param  bool $truth
      *
