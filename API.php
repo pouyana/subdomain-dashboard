@@ -33,4 +33,24 @@ class API extends \Piwik\Plugin\API
 
         return 24;
     }
+
+    /**
+    * 
+    * Gives back a list of subdomains with the help of segmentation command.
+    * 
+    *
+    * @param string $domains
+    * @return array subdomains
+    */
+    public function getSubdomains($idSite, $period, $date, $subdomin)
+    {
+	 $data = \Piwik\Plugins\Actions\API::getInstance()->getPageTitles(
+		$idSite, 
+		$period, 
+		$date, 
+		$segment = $subdomains, 
+		$expanded = false, 
+		$idSubtable = false);
+	    return data;
+    }
 }
