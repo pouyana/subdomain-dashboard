@@ -40,6 +40,10 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 	Piwik::checkUserHasSuperUserAccess();
         $view = new View('@SubdomainDashboard/index.twig');
         $this->setBasicVariablesView($view);
+        
+        $view->infoMessage = nl2br($infoMessage);
+        $view->logContent = $this->readlog();
+
         $view->answerToLife = '42';
 
         return $view->render();

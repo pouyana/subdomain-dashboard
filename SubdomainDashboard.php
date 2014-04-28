@@ -39,21 +39,9 @@ class SubdomainDashboard extends \Piwik\Plugin
         $jsFiles[] = 'plugins/SubdomainDashboard/javascripts/plugin.js';
     }
     
-    public function getReportingMenuItems()
-    {
-	\Piwik\Menu\MenuMain::getInstance()->add(
-        $category = 'General_Visitors', 
-        // this is a 'translation token'. it will be replaced by
-        // a translated string based on the user's language preference.
-        // read about internationalization below to learn more.
-        $title = 'Real-time Reports',
-        // these are the query parameters that will be used in the menu item link's URL
-        $urlQueryParams = array('module' => $this->getPluginName(), 'action' => 'index')
-    );
-   }
    public function addMenu()
    {
 	 MenuAdmin::getInstance()->add('CoreAdminHome_MenuManage', 'Subdomain Dashboard', array('module' => 'SubdomainDashboard', 'action' => 'index'),
-         Piwik::hasUserSuperUserAccess(), $order = 3);	
+         Piwik::hasUserSuperUserAccess(), $order = 5);	
    }
 }
