@@ -41,8 +41,6 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $view = new View('@SubdomainDashboard/index.twig');
         $this->setBasicVariablesView($view);
         
-        $view->infoMessage = nl2br($infoMessage);
-
         $view->answerToLife = '42';
 
         return $view->render();
