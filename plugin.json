@@ -1,0 +1,13 @@
+{
+ "name": "MyPlugin",
+ "version": "0.0.1",
+ "description": "Test Piwik Plugin",
+ "theme": false,
+ "authors": [
+     {
+         "name": "Piwik",
+         "email": "",
+         "homepage": ""
+     }
+ ]
+}
