@@ -1,7 +1,7 @@
 {
  "name": "Subdomain Dashboard",
  "version": "0.0.1",
- "description": "A Plugin to enhance Piwikis abillity, by showing dashboards for the subdomain of a main domain. It also allows user managment for this subdomains.",
+ "description": "A Plugin to enhance Piwiki's abillity, by showing dashboards for the subdomain of a main domain. It also allows user managment for these subdomains.",
  "theme": false,
  "authors": [
      {
