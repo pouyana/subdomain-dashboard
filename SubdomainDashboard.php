@@ -6,11 +6,11 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  *
  */
-namespace Piwik\Plugins\MyPlugin;
+namespace Piwik\Plugins\SubdomainDashboard;
 
 /**
  */
-class MyPlugin extends \Piwik\Plugin
+class SubdomainDashboard extends \Piwik\Plugin
 {
     /**
      * @see Piwik\Plugin::getListHooksRegistered
@@ -25,7 +25,7 @@ class MyPlugin extends \Piwik\Plugin
 
     public function getJsFiles(&$jsFiles)
     {
-        $jsFiles[] = 'plugins/MyPlugin/javascripts/plugin.js';
+        $jsFiles[] = 'plugins/SubdomainDashboard/javascripts/plugin.js';
     }
 	public function getReportingMenuItems()
     {
