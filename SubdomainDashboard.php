@@ -53,7 +53,7 @@ class SubdomainDashboard extends \Piwik\Plugin
    }
    public function addMenu()
    {
-	 MenuAdmin::getInstance()->add('CoreAdminHome_MenuManage', 'SubdomainDashboard_Menu', array('module' => 'SubdomainDashboard', 'action' => 'index'),
+	 MenuAdmin::getInstance()->add('CoreAdminHome_MenuManage', 'Subdomain Dashboard', array('module' => 'SubdomainDashboard', 'action' => 'index'),
          Piwik::hasUserSuperUserAccess(), $order = 3);	
    }
 }
