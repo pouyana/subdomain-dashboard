@@ -42,7 +42,6 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $this->setBasicVariablesView($view);
         
         $view->infoMessage = nl2br($infoMessage);
-        $view->logContent = $this->readlog();
 
         $view->answerToLife = '42';
 
