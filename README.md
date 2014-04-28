@@ -6,7 +6,7 @@ This Plugin will create Dashboards for the subdomains of a main domain and also 
 
 ## FAQ
 
-__How far is it developed?It is in it's initial way and developed by the developer in his free time. 
+__How far is it developed?__It is in it's initial way and developed by the developer in his free time. 
 
 ## Changelog
 
