@@ -1,7 +1,7 @@
 {% extends 'admin.twig' %}
 
 {% block content %}
-
+{{ getLastVisitsByBrowserReport|raw }}
 <strong>Hello world!</strong>
 <br/>
 The answer to life is {{ answerToLife }}
