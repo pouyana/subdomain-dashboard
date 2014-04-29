@@ -40,14 +40,14 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 		Piwik::checkUserHasSuperUserAccess();
         $view = new View('@SubdomainDashboard/index.twig');
         $this->setBasicVariablesView($view);
-
+        $view->getAllsites = $this->getAllSites();
         $view->answerToLife = '42';
         return $view->render();
     }
 
-    public function getAllsites()
+    public function getAllSites()
     {
-    	$IdSitesAdmin = APISubdomainDashboard::getInstance()->getAllSites();
-
+    	$AllSites = APISubdomainDashboard::getInstance()->getAllSites();
+    	return $AllSites;
     }
 }
