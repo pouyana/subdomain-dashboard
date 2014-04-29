@@ -44,7 +44,7 @@ class API extends \Piwik\Plugin\API
       foreach($data as $site){
         array_push($ids,$site);
       }
-      return $data;
+      return $ids;
     }
 
 }
