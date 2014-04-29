@@ -51,6 +51,26 @@ class API extends \Piwik\Plugin\API
 		$segment = $subdomains, 
 		$expanded = false, 
 		$idSubtable = false);
-	    return data;
+	$result = $data->getEmptyClone($keepFilters = false); // we could create a new instance by using new DataTable(),
+                                                              // but that wouldn't copy DataTable metadata, which can be
+                                                              // useful.
+	foreach ($data->getRows() as $visitRow) {
+        	$browserName = $visitRow->getColumn('browserName');
+
+        	// try and get the row in the result DataTable for the browser used in this visit
+        	$resultRowForBrowser = $result->getRowFromLabel($browserName);
+
+        	// if there is no row for this browser, create it
+        if ($resultRowForBrowser === false) {
+            $result->addRowFromSimpleArray(array(
+                'label' => $browserName,
+                'nb_visits' => 1
+            ));
+        } else { // if there is a row, increment the visit count
+            $resultRowForBrowser->setColumn('nb_visits', $resultRowForBrowser->getColumn('nb_visits') + 1);
+        }
+    }
+
+    return $result;
     }
 }
