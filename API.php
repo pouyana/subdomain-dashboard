@@ -46,35 +46,4 @@ class API extends \Piwik\Plugin\API
       }
       return $ids;
     }
-
-    /**
-    * 
-    * Gives back a list of subdomains with the help of segmentation command.
-    * 
-    * @param string $domains
-    * @return array subdomains
-    */
-    public function getAllSubdomains($idSite, $period, $date)
-    {
-      $data = \Piwik\Plugins\Actions\API::getInstance()->getPageTitles(
-        $idSite, 
-        $period, 
-        $date, 
-        $segment = $subdomain, 
-        $expanded = false, 
-        $idSubtable = false);
-      $result = $data->getEmptyClone($keepFilters = false);
-      foreach ($data->getRows() as $visitRow) {
-    	$browserName = $visitRow->getColumn('browserName');
-      $resultRowForBrowser = $result->getRowFromLabel($browserName);
-      if ($resultRowForBrowser === false) {
-            $result->addRowFromSimpleArray(array(
-                'label' => $browserName,
-                'nb_visits' => 1));
-      } else { 
-            $resultRowForBrowser->setColumn('nb_visits', $resultRowForBrowser->getColumn('nb_visits') + 1);
-      }
-    }
-    return $result;
-    }
 }
