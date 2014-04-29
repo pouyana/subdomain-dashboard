@@ -34,60 +34,47 @@ class API extends \Piwik\Plugin\API
         return 24;
     }
 
-
-    /*
-    *
-    *
-    *
+    /**
+    * List all the sites, with the help of SiteManager API
     *
     */
-    public function getAllSites()
-    {
-	$data = \Piwik\Plugins\SitesManager\API::getInstance()->getAllSites();
-	$ids = Array();
-	foreach($data as $site){
-		array_push($ids,$site);
-	}
-	return $ids;
+    public function getAllSites(){
+      $ data = \Piwik\Plugins\SitesManager\API::getInstance()->getAllSites();
+      $ids = Array();
+      foreach($data as $site){
+        array_push($ids,$site);
+      }
+      return $ids;
     }
 
     /**
     * 
     * Gives back a list of subdomains with the help of segmentation command.
     * 
-    *
     * @param string $domains
     * @return array subdomains
     */
     public function getAllSubdomains($idSite, $period, $date)
     {
-	 $data = \Piwik\Plugins\Actions\API::getInstance()->getPageTitles(
-		$idSite, 
-		$period, 
-		$date, 
-		$segment = $subdomain, 
-		$expanded = false, 
-		$idSubtable = false);
-	$result = $data->getEmptyClone($keepFilters = false); // we could create a new instance by using new DataTable(),
-                                                              // but that wouldn't copy DataTable metadata, which can be
-                                                              // useful.
-	foreach ($data->getRows() as $visitRow) {
-        	$browserName = $visitRow->getColumn('browserName');
-
-        	// try and get the row in the result DataTable for the browser used in this visit
-        	$resultRowForBrowser = $result->getRowFromLabel($browserName);
-
-        	// if there is no row for this browser, create it
-        if ($resultRowForBrowser === false) {
+      $data = \Piwik\Plugins\Actions\API::getInstance()->getPageTitles(
+        $idSite, 
+        $period, 
+        $date, 
+        $segment = $subdomain, 
+        $expanded = false, 
+        $idSubtable = false);
+      $result = $data->getEmptyClone($keepFilters = false);
+      foreach ($data->getRows() as $visitRow) {
+    	$browserName = $visitRow->getColumn('browserName');
+      $resultRowForBrowser = $result->getRowFromLabel($browserName);
+      if ($resultRowForBrowser === false) {
             $result->addRowFromSimpleArray(array(
                 'label' => $browserName,
-                'nb_visits' => 1
-            ));
-        } else { // if there is a row, increment the visit count
+                'nb_visits' => 1));
+      } else { 
             $resultRowForBrowser->setColumn('nb_visits', $resultRowForBrowser->getColumn('nb_visits') + 1);
-        }
+      }
     }
-
     return $result;
     }
 }
