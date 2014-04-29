@@ -42,13 +42,13 @@ class API extends \Piwik\Plugin\API
     * @param string $domains
     * @return array subdomains
     */
-    public function getSubdomains($idSite, $period, $date, $subdomin)
+    public function getSubdomains($idSite, $period, $date, $subdomain=false)
     {
 	 $data = \Piwik\Plugins\Actions\API::getInstance()->getPageTitles(
 		$idSite, 
 		$period, 
 		$date, 
-		$segment = $subdomains, 
+		$segment = $subdomain, 
 		$expanded = false, 
 		$idSubtable = false);
 	$result = $data->getEmptyClone($keepFilters = false); // we could create a new instance by using new DataTable(),
