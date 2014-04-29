@@ -34,6 +34,19 @@ class API extends \Piwik\Plugin\API
         return 24;
     }
 
+
+    /*
+    *
+    *
+    *
+    *
+    */
+    public function getAllSiteids()
+    {
+	$data = \Piwik\Plugins\SitesManager\API::getInstance()->getAllSitesId();
+	return $data;
+    }
+
     /**
     * 
     * Gives back a list of subdomains with the help of segmentation command.
@@ -42,7 +55,7 @@ class API extends \Piwik\Plugin\API
     * @param string $domains
     * @return array subdomains
     */
-    public function getSubdomains($idSite, $period, $date, $subdomain=false)
+    public function getAllSubdomains($idSite, $period, $date)
     {
 	 $data = \Piwik\Plugins\Actions\API::getInstance()->getPageTitles(
 		$idSite, 
