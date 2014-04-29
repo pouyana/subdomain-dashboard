@@ -33,17 +33,4 @@ class API extends \Piwik\Plugin\API
 
         return 24;
     }
-
-    /**
-    * List all the sites, with the help of SiteManager API
-    *
-    */
-    public function getAllSites(){
-      $ data = \Piwik\Plugins\SitesManager\API::getInstance()->getAllSites();
-      $ids = Array();
-      foreach($data as $site){
-        array_push($ids,$site);
-      }
-      return $ids;
-    }
 }
