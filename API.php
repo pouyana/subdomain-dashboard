@@ -44,7 +44,11 @@ class API extends \Piwik\Plugin\API
     public function getAllSites()
     {
 	$data = \Piwik\Plugins\SitesManager\API::getInstance()->getAllSites();
-	return $data;
+	$ids = [];
+	foreach($data->getRows() as $sites){
+		array_push($ids,$site[0]);
+	}
+	return $ids;
     }
 
     /**
