@@ -47,7 +47,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
     public function getAllSites()
     {
-    	$AllSites = APISubdomainDashboard::getInstance()->getAllSites();
+    	$AllSites = API::getInstance()->getAllSites();
     	return $AllSites;
     }
 }
