@@ -37,12 +37,17 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
     public function index()
     {
-	Piwik::checkUserHasSuperUserAccess();
+		Piwik::checkUserHasSuperUserAccess();
         $view = new View('@SubdomainDashboard/index.twig');
         $this->setBasicVariablesView($view);
-        
+
         $view->answerToLife = '42';
-        //$view->getAllSites = $this->getAllSites();
         return $view->render();
+    }
+
+    public function getAllsites()
+    {
+    	$IdSitesAdmin = APISubdomainDashboard::getInstance()->getAllSites();
+
     }
 }
