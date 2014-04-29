@@ -42,16 +42,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $this->setBasicVariablesView($view);
         
         $view->answerToLife = '42';
-        $view->getAllSites = $this->getAllSites();
+        //$view->getAllSites = $this->getAllSites();
         return $view->render();
-    }
-
-    public function getAllSites()
-    {
-    	$view = \Piwik\ViewDataTable\Factory::build(
-        $defaultVisualization = 'table',
-        $apiAction = 'SubdomainDashboard.getAllSites'
-    );
-    return $view->render();	
     }
 }
