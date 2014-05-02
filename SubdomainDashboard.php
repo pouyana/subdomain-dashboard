@@ -30,13 +30,27 @@ class SubdomainDashboard extends \Piwik\Plugin
     {
         return array(
             'AssetManager.getJavaScriptFiles' => 'getJsFiles',
+            'AssetManager.getStylesheetFiles'        => 'getStylesheetFiles',
             'Menu.Admin.addItems'              => 'addMenu',
         );
     }
 
     public function getJsFiles(&$jsFiles)
     {
-        $jsFiles[] = 'plugins/SubdomainDashboard/javascripts/plugin.js';
+        //$jsFiles[] = 'plugins/SubdomainDashboard/javascripts/plugin.js';
+        $jsFiles[] = "libs/jquery/jquery.truncate.js";
+        $jsFiles[] = "libs/jquery/jquery.scrollTo.js";
+        $jsFiles[] = "plugins/Zeitgeist/javascripts/piwikHelper.js";
+        $jsFiles[] = "plugins/CoreHome/javascripts/dataTable.js";
+    }
+
+        public function getStylesheetFiles(&$stylesheets)
+    {
+        $stylesheets[] = "plugins/Widgetize/stylesheets/widgetize.less";
+        $stylesheets[] = "plugins/CoreHome/stylesheets/coreHome.less";
+        $stylesheets[] = "plugins/CoreHome/stylesheets/dataTable.less";
+        $stylesheets[] = "plugins/CoreHome/stylesheets/cloud.less";
+        $stylesheets[] = "plugins/Dashboard/stylesheets/dashboard.less";
     }
     
    public function addMenu()

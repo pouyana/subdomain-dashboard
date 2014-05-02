@@ -1,8 +1,10 @@
 {% extends 'admin.twig' %}
-
 {% block content %}
-<strong>Hello world!</strong>
-<br/>
-The answer to life is {{ answerToLife }}
-{{site_one}}
+<h2 piwik-enriched-headline
+    help-url="http://piwik.org/docs/manage-users/">Manage Subdomains Access</h2>
+        <p>Here You can choose from the Domains you want their subdomains managed. The list of subdomains will be generated automaticaly.</p>  
+    <div class="top_controls">
+        {% include "@CoreHome/_siteSelectHeader.twig" %}
+        {% include "@CoreHome/_periodSelect.twig" %}
+    </div>
 {% endblock %}

@@ -12,12 +12,14 @@ use Exception;
 use Piwik\Common;
 use Piwik\Config;
 use Piwik\Cookie;
+use Piwik\Date;
 use Piwik\IP;
 use Piwik\Mail;
 use Piwik\Nonce;
 use Piwik\Notification;
 use Piwik\Piwik;
 use Piwik\Plugins\UsersManager\API as APIUsersManager;
+use Piwik\Plugins\SitesManager\API as APISitesManager;
 use Piwik\Plugins\UsersManager\UsersManager;
 use Piwik\ProxyHttp;
 use Piwik\QuickForm2;
@@ -25,6 +27,7 @@ use Piwik\Session;
 use Piwik\SettingsPiwik;
 use Piwik\Url;
 use Piwik\View;
+use Piwik\Site;
 
 require_once PIWIK_INCLUDE_PATH . '/core/Config.php';
 
@@ -38,24 +41,16 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
     public function index()
     {
 		Piwik::checkUserHasSuperUserAccess();
-        $view = new View('@SubdomainDashboard/index.twig');
-        $this->setBasicVariablesView($view);
         
-        $allSites = $this->getAllSites();
-        $idSiteSelected = 1;
-
-        if(count($allSites)>0){
-        	$defaultWebsiteId = $allSites[0];
-        	$idSiteSelected = Common::getRequestVar('idSite', $defaultWebsiteId);
-        }
-        $view->site_one = $idSiteSelected;
-        $view->answerToLife = '42';
+        $view = new View('@SubdomainDashboard/index.twig');
+        
+        $this->setGeneralVariablesView($view);
+        
+        $periodSelected = Common::getRequestVar('period');
+        $dateSelected = Common::getRequestVar('date');
+        $idSiteSelected = Common::getRequestVar('idSite');
+   
         return $view->render();
     }
 
-    public function getAllSites()
-    {
-    	$AllSites = API::getInstance()->getAllSites();
-    	return $AllSites;
-    }
 }
