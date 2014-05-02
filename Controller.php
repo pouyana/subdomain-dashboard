@@ -46,10 +46,19 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         
         $this->setGeneralVariablesView($view);
         
-        $periodSelected = Common::getRequestVar('period');
-        $dateSelected = Common::getRequestVar('date');
-        $idSiteSelected = Common::getRequestVar('idSite');
-   
+        $period = Common::getRequestVar('period');
+        $date = Common::getRequestVar('date');
+        $idSite = Common::getRequestVar('idSite');
+        
+        $domains =  API::getInstance()->getCustomVariableDomains(
+        $idSite,
+        $period,
+        $date,
+        $segment=false,
+        $expanded = true
+        );
+
+        $view->domains = $domains;
         return $view->render();
     }
 

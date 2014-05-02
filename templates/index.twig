@@ -7,4 +7,20 @@
         {% include "@CoreHome/_siteSelectHeader.twig" %}
         {% include "@CoreHome/_periodSelect.twig" %}
     </div>
+        <div class="entityContainer" style="margin-bottom:50px;margin-top:20px">
+        <table class="entityTable dataTable" id="domains">
+            <thead>
+            <tr>
+                <th>
+                    Domain Name
+                </th>
+            </tr>
+            <tbody>
+                {% for domain in domains %}
+                <tr>
+                    <td id="domainName" class="editable">
+                        {{ domain }}
+                    </td>
+                </tr>
+                {% endfor %}
 {% endblock %}

@@ -89,6 +89,10 @@ class API extends \Piwik\Plugin\API
         $idSubtable,
         $segment 
         );
-        return $data;
+        $domains = array();
+        foreach($data->getRows() as $row){
+            array_push($domains,$row->getColumn("label"));
+        }
+        return $domains;
     }
 }
