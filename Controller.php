@@ -48,6 +48,14 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         	$defaultWebsiteId = $allSites[0];
         	$idSiteSelected = Common::getRequestVar('idSite', $defaultWebsiteId);
         }
+
+        if ($idSiteSelected === 'all') {
+            $defaultReportSiteName = Piwik::translate('UsersManager_ApplyToAllWebsites');
+        } 
+        else {
+            $defaultReportSiteName = Site::getNameFor($idSiteSelected);
+        }
+
         $view->site_one = $idSiteSelected;
         $view->answerToLife = '42';
         return $view->render();
